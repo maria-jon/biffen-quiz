@@ -70,7 +70,7 @@ export interface IQuestion {
     },
     {
       id: 10,
-      question: "Åh nej! Biffen leker dragkamp med något han inte får! Vad ska du säga för att han ska släppa?",
+      question: "Åh nej, Biffen leker med nåt han inte ska! Vilket kommando gör så han släpper?",
       answers: ["Tack", "Loss", "Släpp"],
       correctAnswer: "Tack"
     },

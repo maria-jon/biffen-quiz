@@ -29,6 +29,7 @@ function startQuiz() {
 
   welcomeSection.classList.add("hidden");
   questionsSection.classList.remove("hidden");
+  //questionsSection.classList.add("flex");
   
   selectedQuestions = selectRandomQuestions();
     currentQuestionIndex = 0;
@@ -210,6 +211,7 @@ function endQuiz() {
   // Show scoreboard and hide quiz page
   questionsSection.classList.add("hidden");
   scoreboardSection.classList.remove("hidden");
+  // scoreboardSection.classList.add("flex");
 
   const scoreboardSectionContainer = document.getElementById("scoreboardContainer") as HTMLElement;
 
@@ -222,6 +224,20 @@ function endQuiz() {
     <p>Din tid: ${elapsedTime} sekunder</p>
     </div>  
   `;
+
+  if (points >= 8) {
+    scoreboardSectionContainer.innerHTML += `
+      <p>Supersnyggt! Du är en Biff-expert!</p>
+    `;
+  } else if (points >= 5) {
+    scoreboardSectionContainer.innerHTML += `
+      <p>Bra, du har helt klart koll på Biffen.</p>
+    `;
+  } else {
+    scoreboardSectionContainer.innerHTML += `
+      <p>Känner du ens Biffen...?</p>
+    `;
+  }
 }
 
 // Start over the quiz
