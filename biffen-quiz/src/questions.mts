@@ -12,7 +12,7 @@ export interface IQuestion {
       id: 0,
       question: "Vilket år föddes Biffen?",
       answers: ["2022", "2023", "2024"],
-      correctAnswer: "2023"
+      correctAnswer: "2023",
     },
     {
       id: 1,

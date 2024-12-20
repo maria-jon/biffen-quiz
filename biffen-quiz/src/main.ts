@@ -153,9 +153,15 @@ function displayQuizAnswers() {
         const answerValue = (button as HTMLInputElement).value;
 
         if (answerValue === correctAnswer) {
-          button.parentElement!.style.color = "green";
+          button.parentElement!.style.color = "#47af51";
+          button.parentElement!.innerHTML += `
+            <i class="fa fa-check" aria-description="Rätt svar"></i>
+            `;
         } else {
-          button.parentElement!.style.color = "red";
+          button.parentElement!.style.color = "#af4747";
+          button.parentElement!.innerHTML += `
+            <i class="fa fa-close" aria-description="Fel svar"></i>	
+          `;
         }
       });
 
