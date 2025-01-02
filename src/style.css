@@ -22,12 +22,8 @@ body {
   color: #c4c4c4;
 }
 
-.dark-mode .timer {
-  /*
-  background-color: #3d1613;
-  */
-  background-color: #9c7472;
-  color: #000;
+.dark-mode button:hover {
+  background-color: #5e3733;
 }
 
 .dark-mode header {
@@ -117,6 +113,8 @@ button {
   cursor: pointer;
   min-width: 44px;
   min-height: 44px;
+
+  transition-duration: 0.4s;
 }
 
 button:disabled {
@@ -126,6 +124,10 @@ button:disabled {
 
 button:not(:disabled) {
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #750c05;
 }
 
 nav {
@@ -143,13 +145,8 @@ nav {
 }
 
 .timer {
-  background-color: #8B322C;
-  padding: 0.5rem;
-  margin: 0.5rem;
-  border-radius: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 1rem;
+  min-width: 60px;
 }
 
 .flex {
