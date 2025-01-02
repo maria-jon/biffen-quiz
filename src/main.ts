@@ -11,6 +11,7 @@ let isTimerRunning: boolean = false;
 const startQuizBtn = document.getElementById("startQuizBtn") as HTMLButtonElement;
 const endQuizBtn = document.getElementById("endQuizBtn") as HTMLButtonElement;
 const playAgainBtn = document.getElementById("playAgainBtn") as HTMLButtonElement;
+const feedbackElement = document.getElementById("feedback") as HTMLParagraphElement;
 
 startQuizBtn.addEventListener("click", startQuiz);
 endQuizBtn.addEventListener("click", endQuiz);
@@ -20,7 +21,7 @@ playAgainBtn.addEventListener("click", playAgain);
 const welcomeSection = document.getElementById("welcome") as HTMLElement;
 const questionsSection = document.getElementById("questions") as HTMLElement;
 const scoreboardSection = document.getElementById("scoreboard") as HTMLElement;
-
+const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
 
 // Hide welcome page and show the quiz page
 function startQuiz() { 
@@ -36,7 +37,7 @@ function startQuiz() {
 
     displayQuestion();
 
-    document.getElementById("nextQuestionBtn")!.addEventListener("click", handleNextQuestion);
+    nextQuestionBtn.addEventListener("click", handleNextQuestion);
 }
 
 // Variabel for questions
@@ -68,17 +69,12 @@ const questionElement = document.getElementById("question")!;
 
 // Function for display a question
 function displayQuestion(): void {
-  if (currentQuestionIndex >= selectedQuestions.length) {
-    document.getElementById("nextQuestionBtn")!.setAttribute("disabled", "true");
-    return;
-  }
   
   const question = selectedQuestions[currentQuestionIndex];
   questionTitle.textContent = `Fråga nr ${currentQuestionIndex + 1}`;
-  questionElement.innerHTML = `
-    ${question.question}
-  `;
-
+  questionElement.textContent = `${question.question}`;
+  // Disable "Next question"-btn 
+  nextQuestionBtn!.setAttribute("disabled", "true");
   if (currentQuestionIndex <= 8) {
     // Show "Next question"-btn
     nextQuestionBtn.hidden = false;
@@ -87,7 +83,6 @@ function displayQuestion(): void {
     nextQuestionBtn.hidden = true;
     endQuizBtn.hidden = false;
   }
-
   // Show the answer for the question as well
   displayQuizAnswers();
 }
@@ -101,7 +96,7 @@ function handleNextQuestion(): void {
 
 // Start over the quiz
 function handlePlayAgain(): void {
-    document.getElementById("nextQuestionBtn")!.removeAttribute("disabled");
+  nextQuestionBtn.removeAttribute("disabled");
     startQuiz();
 }
   
@@ -121,7 +116,6 @@ function init() {
 };
 
 const answersContainer = document.getElementById("answers") as HTMLElement;
-const nextQuestionBtn = document.getElementById("nextQuestionBtn") as HTMLElement;
 
 // Show the answers for the quiz questions
 function displayQuizAnswers() {
@@ -180,6 +174,8 @@ function displayQuizAnswers() {
         label.style.color = "initial";
       });
 
+      let isAnswerCorrect = false;
+
       // Mark which options are correct/incorrect and adds color
       radioButtons.forEach((button) => {
         const answerValue = (button as HTMLInputElement).value;
@@ -189,6 +185,7 @@ function displayQuizAnswers() {
           button.parentElement!.innerHTML += `
             <i class="fa fa-check" aria-description="Rätt svar"></i>
             `;
+            isAnswerCorrect = true;
         } else {
           button.parentElement!.style.color = "#af4747";
           button.parentElement!.innerHTML += `
@@ -203,11 +200,22 @@ function displayQuizAnswers() {
         points++;
       }
       
-      if (currentQuestionIndex >= 9) {
-        endQuizBtn.removeAttribute("disabled");
+      // Show feedback to the user
+      if (isAnswerCorrect) {
+        feedbackElement.textContent = "Rätt svar!";
+        feedbackElement.style.color = "#47af51";
+      } else {
+        feedbackElement.textContent = "Fel svar!";
+        feedbackElement.style.color = "#af4747";
       }
       
       console.log(`Current Points: ${points}`);
+      // Enable next question-btn 
+      nextQuestionBtn!.removeAttribute("disabled");
+
+      if (currentQuestionIndex >= 9) {
+        endQuizBtn.removeAttribute("disabled");
+      }
     });
   });
 }
