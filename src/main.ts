@@ -336,9 +336,18 @@ function playAgain() {
 
 init();
 
+// ----------- PAW BUTTON -----------
+const homeBtn = document.getElementById("homeBtn") as HTMLButtonElement;
+
+homeBtn.addEventListener("click", playAgain);
+
+// ----------- TIMER BUTTON -----------
+const timerBtn = document.getElementById("timerBtn") as HTMLButtonElement;
+
+timerBtn.addEventListener("click", resetTimer);
 
 // ----------- DARK MODE -----------
-const darkModeBtn = document.getElementById("dark-mode") as HTMLButtonElement;
+const darkModeBtn = document.getElementById("darkModeBtn") as HTMLButtonElement;
 const darkModeBtnSpan = document.getElementById("dark-mode-span") as HTMLElement;
 
 darkModeBtn.addEventListener("click", darkMode);
