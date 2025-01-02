@@ -83,6 +83,7 @@ function displayQuestion(): void {
     nextQuestionBtn.hidden = true;
     endQuizBtn.hidden = false;
   }
+  feedbackElement.textContent = "";
   // Show the answer for the question as well
   displayQuizAnswers();
 }
@@ -265,9 +266,9 @@ function endQuiz() {
 
   scoreboardSectionContainer.innerHTML += `
     <div>
-    <p>Poäng: ${points * 100}</p>
+    <p><span>Poäng:</span> ${points * 100}</p>
     <p>${points} av 10 rätt</p>
-    <p>Din tid: ${elapsedTime} sekunder</p>
+    <p><span>Din tid: </span>${elapsedTime} sekunder</p>
     </div>  
   `;
 

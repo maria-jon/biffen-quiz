@@ -28,11 +28,11 @@
       </section>
 
       <section class="questions flex hidden" id="questions">
-        <h2 id="questionTitle">Fråga nr</h2>
+        <h2 class="question-title" id="questionTitle">Fråga nr</h2>
 
-        <div id="questionContainer" class="flex">
-          <p id="question"></p>
-          <p id="answers" class="flex"></p>
+        <div class="question-container" id="questionContainer">
+          <p class="question" id="question"></p>
+          <p class="answers" id="answers"></p>
           <!--- lägg till frågor med ts-->
           <p id="feedback" class="feedback" aria-live="assertive"></p>
         </div>
@@ -43,8 +43,8 @@
       </section>
 
       <section class="scoreboard flex hidden" id="scoreboard">
-        <h2>Bra jobbat!</h2>
-        <div id="scoreboardContainer" class="flex">
+        <h2 class="scoreboard-title">Bra jobbat!</h2>
+        <div id="scoreboardContainer" class="scoreboard-container flex">
           <!-- generera med ts -->
         </div>
         <button id="playAgainBtn">Spela igen</button>
