@@ -318,16 +318,6 @@ function summariseQuestions() {
   })
 }
 
-/*
-currentQuestion.answers.forEach((answer, index) => {
-  answersContainer.innerHTML += `
-    <label>
-      <input type="radio" name="quizAnswer" value="${answer}" id="answer${index}">
-      <span>${answer}</span>
-    </label>
-  `;
-})
-*/
 // Start over the quiz
 function playAgain() {
   resetTimer();
