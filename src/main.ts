@@ -346,4 +346,19 @@ function playAgain() {
 
 init();
 
-// console.log(updatePoints());
+
+// ----------- DARK MODE -----------
+const darkModeBtn = document.getElementById("dark-mode") as HTMLButtonElement;
+const darkModeBtnSpan = document.getElementById("dark-mode-span") as HTMLElement;
+
+darkModeBtn.addEventListener("click", darkMode);
+
+function darkMode() {
+  document.body.classList.toggle("dark-mode")
+
+  if (darkModeBtnSpan.textContent === `dark_mode`) {
+    darkModeBtnSpan.textContent = `light_mode`;
+  } else {
+    darkModeBtnSpan.textContent = `dark_mode`;
+  }
+}
