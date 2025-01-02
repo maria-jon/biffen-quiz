@@ -34,7 +34,9 @@
           <p class="question" id="question"></p>
           <p class="answers" id="answers"></p>
           <!--- lägg till frågor med ts-->
-          <p id="feedback" class="feedback" aria-live="assertive"></p>
+          <p id="feedback" class="feedback" aria-live="assertive">
+            <p class="expo" id="expo"></p>
+          </p>
         </div>
         <button id="nextQuestionBtn" hidden>Nästa fråga</button>
 
@@ -48,6 +50,12 @@
           <!-- generera med ts -->
         </div>
         <button id="playAgainBtn">Spela igen</button>
+        <div class="summary-list-container">
+          <h2>Facit</h2>
+          <div class="summary-list" id="summaryList">
+            <!-- generera med ts -->
+          </div>
+        </div>
       </section>
       
     </main>

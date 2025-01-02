@@ -66,6 +66,7 @@ function selectRandomQuestions(): IQuestion[] {
 
 const questionTitle = document.getElementById("questionTitle")!;
 const questionElement = document.getElementById("question")!;
+const questionExpo = document.getElementById("expo")!;
 
 // Function for display a question
 function displayQuestion(): void {
@@ -84,6 +85,8 @@ function displayQuestion(): void {
     endQuizBtn.hidden = false;
   }
   feedbackElement.textContent = "";
+  questionExpo.textContent = "";
+
   // Show the answer for the question as well
   displayQuizAnswers();
 }
@@ -164,7 +167,6 @@ function displayQuizAnswers() {
     });
   });
 
-
   // Add an event for each radioBtn when pressing it
   radioButtons.forEach((radioButton) => {
     radioButton.addEventListener("change", () => {
@@ -194,6 +196,7 @@ function displayQuizAnswers() {
           `;
         }
       });
+  
 
       // Increment points if the answer is correct
       const selectedValue = (radioButton as HTMLInputElement).value;
@@ -209,6 +212,8 @@ function displayQuizAnswers() {
         feedbackElement.textContent = "Fel svar!";
         feedbackElement.style.color = "#af4747";
       }
+      
+      questionExpo.textContent = `${currentQuestion.expo}`;
       
       console.log(`Current Points: ${points}`);
       // Enable next question-btn 
@@ -285,8 +290,44 @@ function endQuiz() {
       <p>Känner du ens Biffen...?</p>
     `;
   }
+
+  summariseQuestions();  
 }
 
+const summaryList = document.getElementById("summaryList") as HTMLElement;
+
+// Summarise questions 
+function summariseQuestions() {
+  summaryList.innerHTML += "";
+
+  selectedQuestions.forEach((question) => {
+    
+    summaryList.innerHTML += `
+      <div class="summary-object-container">
+        <ul class="summary-object">
+          <li class="questions-summary">
+            ${question.question}
+            <ul class="questions-summary-ul">
+              <li class="answers-summary">${question.correctAnswer}</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="expo">${question.expo}</span>
+      </div>
+    `;
+  })
+}
+
+/*
+currentQuestion.answers.forEach((answer, index) => {
+  answersContainer.innerHTML += `
+    <label>
+      <input type="radio" name="quizAnswer" value="${answer}" id="answer${index}">
+      <span>${answer}</span>
+    </label>
+  `;
+})
+*/
 // Start over the quiz
 function playAgain() {
   resetTimer();
@@ -306,4 +347,3 @@ function playAgain() {
 init();
 
 // console.log(updatePoints());
-

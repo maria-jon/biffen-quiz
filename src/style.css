@@ -10,6 +10,7 @@ header {
   justify-content: space-around;
   background-color: #4793AF;
   color: #fff;
+  border-radius: 1rem;
 }
 
 header .left {
@@ -99,6 +100,17 @@ label {
   margin-bottom: 0.5rem;
 }
 
+.expo {
+  margin: auto;
+  text-align: center;
+  font-style: italic;
+  max-width: 100%;
+}
+
+.question-container {
+  max-width: 90%;
+}
+
 .question {
   font-size: 1.25rem;
   font-weight: bold;
@@ -146,6 +158,60 @@ label {
   font-weight: bold;
 }
 
+.summary-object {
+  padding-inline-start: 0;
+  list-style-type: none;
+}
+
+.questions-summary-ul {
+  padding-inline-start: 1rem;
+  margin: 0;
+}
+
+.summary-list-container {
+  background-color: #4793AF;
+  border-radius: 1rem;
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-list-container h2 {
+  text-align: center;
+  margin: 1rem 0;
+  color: #fff;
+  padding-bottom: 2rem;
+}
+
+.summary-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  
+  margin-bottom: 2rem;
+  align-self: center;
+}
+
+.summary-object-container {
+  width: 70%;
+  background-color: #FFC470;  
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.questions-summary {
+  font-weight: bold;
+}
+
+.answers-summary {
+  font-weight: lighter;
+}
+
+
 @media screen and (min-width: 520px) {
 
   header .left {
@@ -166,7 +232,24 @@ label {
     margin: 0.5rem;
   }
 
+  .question-container {
+    width: 60%;
+  }
+
   .question {
     text-align: center;
+  }
+
+  .summary-list-container {
+    justify-content: center;
+  }
+
+  .summary-list {
+    width: 80%;
+    align-self: center;
+  }
+
+  .summary-object-container {
+    width: 40%;
   }
 }
